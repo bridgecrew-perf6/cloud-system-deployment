@@ -1,0 +1,28 @@
+persistence:
+  enabled: true
+  storageClass: local-path
+
+postgresql:
+    persistence:
+      enabled: true
+      storageClass: local-path
+
+ingress:
+  enabled: true
+  #className: nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  hosts:
+    - host: gitea.ninox.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+  - hosts:
+      - gitea.ninox.com
+    secretName: ingress-cert-tls
+
+gitea:
+  config:
+    webhook:
+      ALLOWED_HOST_LIST: "*"

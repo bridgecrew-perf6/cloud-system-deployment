@@ -1,0 +1,6 @@
+# kustomization.yaml
+namespace: default
+resources:
+- demo.yaml
+- selfsigned/intermidiate-issuer.yaml
+- selfsigned/certificate.yaml
